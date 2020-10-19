@@ -1,0 +1,12 @@
+{% load wagtailimages_tags %}
+{% load pandas_filters %}
+{% load crispy_forms_tags %}
+<div class="container scroll">
+  {% for loan_matrix_table in loan_matrix_tables %}
+    {% if loan_matrix_table.loan_type.loan_type == lt %}
+      
+      {{ loan_matrix_table.table_html|safe }}
+      
+    {% endif %}
+  {% endfor %}
+</div>

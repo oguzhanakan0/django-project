@@ -1,0 +1,74 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<section class="tabs1 cid-s2gyxGxsge" id="tabs1-5">
+<div class="container">
+    <h2 class="mbr-white align-center pb-5 mbr-fonts-style mbr-bold display-5">
+        Kredileri karşılaştır, mantıklı kararı ver!</h2>
+    <div class="media-container-row">
+        <div class="col-12 col-md-8">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item" loan-type="GPL">
+                    <a class="nav-link mbr-fonts-style display-7" onclick="hideExtraCarLoanFields()" role="tab" data-toggle="tab" href="#tabs1-5_tab0">
+                        <span class="mobi-mbri mobi-mbri-cash mbr-iconfont mbr-iconfont-btn"></span>
+                        İhtiyaç Kredisi
+                    </a>
+                </li>
+                <li class="nav-item" loan-type="MOR">
+                    <a class="nav-link mbr-fonts-style display-7" onclick="hideExtraCarLoanFields()" role="tab" data-toggle="tab" href="#tabs1-5_tab1">
+                        <span class="mobi-mbri mobi-mbri-home mbr-iconfont mbr-iconfont-btn"></span>
+                        Konut Kredisi
+                    </a>
+                </li>
+                <li class="nav-item" loan-type="CAR">
+                    <a class="nav-link mbr-fonts-style display-7" onclick="showExtraCarLoanFields()" role="tab" data-toggle="tab" href="#tabs1-5_tab2">
+                        <span class="mobi-mbri mobi-mbri-shopping-cart mbr-iconfont mbr-iconfont-btn"></span>
+                        Taşıt Kredisi
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form
+                            method = "post" id="loanRequestForm"
+                            data-tenures-url="{% url 'ajax_load_tenures' %}"
+                            get-principal-limits-url="{% url 'ajax_get_principal_limits' %}"
+                            >
+                            {% csrf_token %}
+                            {{ form.media }}
+                            <input type="hidden" name="request_type" value="main_request" />
+                            <input type="hidden" name="loan_type" id="id_loan_type" value="GPL" />
+                            <div class="row mbr-fonts-style display-7" id="car-loan-extra-fields" style="display: none">
+                                <div class="col-sm-2"> <!-- BURASI COK DANDIK OLDU DEGISSIN -->
+                                    <input type="radio" id="0km" name="radio-group" checked>
+                                    <label for="0km">0 Km</label>
+                                </div>
+                                <div class="col-sm-2"> <!-- BURASI COK DANDIK OLDU DEGISSIN -->
+                                    <input type="radio" id="2el" name="radio-group">
+                                    <label for="2el">2. El</label>
+                                </div>
+                            </div>
+                            {{ form.principal|as_crispy_field }}
+                            {{ form.tenure|as_crispy_field }}
+                            <button type="submit" class="general-button mbr-fonts-style display-4 font-weight-bold">Kredileri Listele</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+<script src="{% static 'home/js/loan_request_ops.js' %}"></script>
+<script>
+function showExtraCarLoanFields() {
+  document.getElementById("car-loan-extra-fields").style.display = "block";
+}
+</script>
+<script>
+function hideExtraCarLoanFields() {
+  document.getElementById("car-loan-extra-fields").style.display = "none";
+}
+</script>
+
+</section>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load wagtailimages_tags %}
+{% load static %}
+
+{% block head %}
+    {% include 'home/global/head.html' %}
+{% endblock %}
+
+{% block body %}
+<body>
+    <!-- SIDENAV BLOCK -->
+    <!-- <div class="sidenav border-right mbr-fonts-style display-8">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
+    </div> -->
+
+    {% include 'home/global/menu.html' %}
+    <section class="engine"></section>
+    {% include 'home/local/loan_request_section.html' %}
+    {% include 'home/local/loan_matrix_section.html' %}
+    {% include 'home/local/featured_loans_section.html' %}
+    {% include 'home/local/loan_summary_section.html' %}
+    {% include 'home/local/faq_section.html' %}
+    {% include 'home/local/blog_section.html' %}
+    {% include 'home/local/subscription_section.html' %}
+</body>
+{% endblock %}
+{% block foot %}
+    {% include 'home/global/foot.html' %}
+{% endblock %}
+{% block scripts %}
+    {% include 'home/global/scripts.html' %}
+{% endblock %}

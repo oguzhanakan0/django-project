@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load wagtailimages_tags %}
+
+{% block head %}
+    {% include 'home/global/head.html' %}
+{% endblock %}
+
+{% block body %}
+<body>
+    {% include 'home/global/menu.html' %}
+    {% include 'loans/global/tree_bar.html' %}
+    <section class="engine"></section>
+    {% include 'loans/loan_detail_page_elements/loan_detail_main_section.html' %}
+</body>
+{% endblock %}
+
+{% block foot %}
+    {% include 'home/global/foot.html' %}
+{% endblock %}
+
+{% block scripts %}
+    {% include 'home/global/scripts.html' %}
+{% endblock %}

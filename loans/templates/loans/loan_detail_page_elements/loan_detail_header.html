@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+{% load humanize %}
+<div class="loan-query-title col-12 webkit-align-center">
+    <span class="display-5 font-weight-bold">Kredi Detayı</span>
+    
+    <br>
+    {% image loan.bank.logo fill-150x50-c100 alt="{{ loan.bank.name }}" %}
+	<br>
+	<span class="display-5 mbr-semibold">{{ loan.name }}</span>
+    <p class="display-7">
+        {{ principal|intcomma }} TL'lik kredin hazır! Kredi ayrıntılarını inceleyip hemen başvurabilirsin.
+    </p>
+</div>

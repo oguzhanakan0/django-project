@@ -1,0 +1,113 @@
+BASE_DIR: D:\hook
+Python 3.7.3 (default, Apr 24 2019, 15:29:51) [MSC v.1915 64 bit (AMD64)]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.6.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]:    ...:    ...:    ...: Out[1]: '\nrun script via:\n> python manage.py shell < scripts/py/jobs/transfer_scraped_data.py >> scripts/scrape/data/data_transfer_log/data_transfer_log.txt \n'
+
+In [2]: 
+In [3]: 
+In [4]: 
+In [5]: 
+In [6]: 
+In [7]: 
+In [8]: 
+In [9]: 
+In [10]: 
+In [11]: 
+In [12]: 
+In [13]: 
+In [14]: 
+In [15]: 
+In [16]: 
+In [17]:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...: 
+In [18]:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...: 
+In [19]:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...:     ...: 
+In [20]:     ...:     ...:     ...: 
+In [21]: 
+In [22]: 
+In [23]: 
+In [24]: 
+In [25]: 
+In [25]: 
+In [26]: 
+In [27]: 
+In [28]: 
+In [28]: 
+In [28]: 
+In [29]: 
+In [30]: 
+In [30]: 
+In [31]: 
+In [32]: 
+In [32]: 
+In [32]: 
+In [33]: ========================================
+
+In [34]: > date: 2020-07-16
+
+In [35]: > shape = (20, 7)
+> unique bank # = 2
+
+In [36]: > loans data insertion started.
+
+In [37]:     ...:     ...: 0: loan object exists with id=a4fabe36-c734-11ea-b073-d0c63746edcc. updating.
+0: interest is still the same. passing update.
+1: loan object exists with id=a4fc4852-c734-11ea-b4e9-d0c63746edcc. updating.
+1: interest is still the same. passing update.
+2: loan object exists with id=a4fd79c0-c734-11ea-8677-d0c63746edcc. updating.
+2: interest is still the same. passing update.
+3: loan object exists with id=a4feb194-c734-11ea-b323-d0c63746edcc. updating.
+3: interest is still the same. passing update.
+4: loan object exists with id=a78ea652-c73d-11ea-b030-d0c63746edcc. updating.
+4: interest is still the same. passing update.
+5: loan object exists with id=a4f67a62-c734-11ea-a1f5-d0c63746edcc. updating.
+5: interest is still the same. passing update.
+6: loan object exists with id=a4f7d828-c734-11ea-9ef2-d0c63746edcc. updating.
+6: interest is still the same. passing update.
+7: loan object exists with id=a4f969de-c734-11ea-93fc-d0c63746edcc. updating.
+7: interest is still the same. passing update.
+8: loan object exists with id=a509cdc2-c734-11ea-8eb6-d0c63746edcc. updating.
+8: interest is still the same. passing update.
+9: loan object exists with id=a50b3762-c734-11ea-bdae-d0c63746edcc. updating.
+9: interest is still the same. passing update.
+10: loan object exists with id=a50c6d48-c734-11ea-bf34-d0c63746edcc. updating.
+10: interest is still the same. passing update.
+11: loan object exists with id=a50db146-c734-11ea-b134-d0c63746edcc. updating.
+11: interest is still the same. passing update.
+12: loan object exists with id=a4ffdae2-c734-11ea-a2c7-d0c63746edcc. updating.
+12: interest is still the same. passing update.
+13: loan object exists with id=a501155c-c734-11ea-baa0-d0c63746edcc. updating.
+13: interest is still the same. passing update.
+14: loan object exists with id=a5024ff6-c734-11ea-9836-d0c63746edcc. updating.
+14: interest is still the same. passing update.
+15: loan object exists with id=a5039014-c734-11ea-ba23-d0c63746edcc. updating.
+15: interest is still the same. passing update.
+16: loan object for name='Hyundai', tenure=12, principal=100000 does not exist. inserting.
+loan change logged
+16: loan saved
+17: loan object for name='Hyundai', tenure=24, principal=100000 does not exist. inserting.
+loan change logged
+17: loan saved
+18: loan object for name='Hyundai', tenure=12, principal=200000 does not exist. inserting.
+loan change logged
+18: loan saved
+19: loan object for name='Hyundai', tenure=24, principal=200000 does not exist. inserting.
+loan change logged
+19: loan saved
+> loans data insertion finished.
+
+In [38]: > scrapelog insertion started.
+
+In [39]:     ...:     ...: 0: scrapelog saved
+1: scrapelog saved
+> scrapelog insertion finished.
+
+In [40]: > alertlog insertion started.
+
+In [41]:     ...:     ...: 0: alertlog saved
+1: alertlog saved
+> alertlog insertion finished.
+
+In [42]: 
+In [42]: Do you really want to exit ([y]/n)? 

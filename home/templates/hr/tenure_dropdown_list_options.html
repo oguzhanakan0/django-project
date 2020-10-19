@@ -1,0 +1,7 @@
+{% load pandas_filters %}
+<option value="">Vade Seçiniz ({{ min|add_tenure_suffix_plain }} - {{ max|add_tenure_suffix_plain }})</option>
+{% for tenure in tenures %}
+<option value="{{ tenure.tenure }}" {% if tenure.tenure == initial_tenure|as_int %} selected {% endif %}>
+{{ tenure.tenure|add_tenure_suffix }}
+</option>
+{% endfor %}

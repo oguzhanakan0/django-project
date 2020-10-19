@@ -1,0 +1,53 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load pandas_filters %}
+<div class = "pad-right-05em">
+    <form 
+    method = "post" id="quickLoanDetailRequestForm"
+    data-tenures-url="{% url 'ajax_load_tenures' %}"
+    get-principal-limits-url="{% url 'ajax_get_principal_limits' %}">
+        {% csrf_token %}
+        {{ form.media }}
+        <input type="hidden" name="slug" id="slug_id" value="{{ loan.slug }}" />
+        <input type="hidden" name="initial_tenure" id="initial_tenure_id" value="{{ tenure }}" />
+        <input type="hidden" name="initial_principal" id="initial_principal_id" value="{{ principal }}" />
+        {% comment %} {{ form.principal|as_crispy_field }} {% endcomment %}
+        <div class="controls">
+          <div class="form-group-loan-request display-8">
+              <input
+              id = "id_principal"
+              name = "principal"
+              class = "form-field"
+              type = "number"
+              step = "1000"
+              min = 0
+              max = 1000000
+              value = {{ principal }}
+              placeholder = "Kredi Tutarı"
+              required>
+              <span>TL</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <!-- tenure input widget -->
+          <select 
+            name="tenure" 
+            class="select form-control" 
+            id="id_tenure"
+            value={{ tenure }}
+            required>
+              {% for this_tenure in available_tenures %}
+                <option value="{{ this_tenure.tenure }}" {% if this_tenure.tenure == tenure|as_int %} selected {% endif %}>
+                {{ this_tenure.tenure|add_tenure_suffix }}
+                </option>
+              {% endfor %}
+          </select>
+        </div>
+
+        <button type="submit" class="general-button mbr-fonts-style display-7" name="detail-button">Listele</button>
+    </form>
+</div>
+{% comment %} <script src="{% static 'home/js/set-loan-type.js' %}"></script> {% endcomment %}
+
+<!-- TODO: PARAMETRIZE MIN-MAX IN PRINCIPAL LATER -->

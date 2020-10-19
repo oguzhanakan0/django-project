@@ -1,0 +1,24 @@
+{% load pandas_filters %}
+<div class = "pad-left-05em">
+    <div class="loan-payment-breakdown-parent webkit-align-center display-7">
+        <div class="loan-payment-breakdown-div1 align-center border-bottom">
+            <span class="display-5">Ödeme Detayı</span>
+        </div>
+        <div class="loan-payment-breakdown-div2">Kredi Tutarı</div>
+        <div class="loan-payment-breakdown-div3 align-right">
+            {{ principal|as_currency_plain }}
+        </div>
+        <div class="loan-payment-breakdown-div4">Toplam Faiz</div>
+        <div class="loan-payment-breakdown-div5 align-right">
+            {{ loan.total_interest|as_currency_plain }}
+        </div>
+        <div class="loan-payment-breakdown-div6">Dosya Masrafı</div>
+        <div class="loan-payment-breakdown-div7 align-right">
+            {{ loan.allocation_fee|as_currency_plain }}
+        </div>
+        <div class="loan-payment-breakdown-div8 border-top">Toplam Ödeme</div>
+        <div class="loan-payment-breakdown-div9 border-top align-right">
+            {{ loan.total_payment|as_currency_plain }}
+        </div>
+    </div>
+</div>

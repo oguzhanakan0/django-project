@@ -1,0 +1,27 @@
+/*#ft-container {
+ width:100%;
+ text-align:center;
+}*/
+
+#ft-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+#ft-container > div {
+	border:1px solid #ddd;
+	border-radius: 12px;
+	padding:10px;
+}
+
+@media (max-width: 767px){
+	#ft-container {
+		display: none;
+	}
+}
+
+
+.space-between {
+	display: flex;
+	justify-content: space-between;
+}

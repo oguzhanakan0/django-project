@@ -1,0 +1,30 @@
+{% load humanize %}
+{% load static %}
+<section class="col-12 cid-s3ZoaRMIHq"> 
+    
+    <div class="container" style="margin-bottom: 1em;">
+        {% include 'loans/loan_detail_page_elements/loan_detail_header.html' %}
+    </div>
+
+    <div class="container">
+        <div class="row-nice">
+            <div class="loan-detail-area col-xs-4 col-sm-3">
+                {% include 'loans/loan_detail_page_elements/quick_loan_request_section.html' %}
+            </div>
+            <div class="loan-detail-area loan-final-card col-xs-8 col-sm-5">
+                {% include 'loans/loan_detail_page_elements/loan_detail_section.html' %}
+            </div>
+            <div class="loan-detail-area col-sm-4">
+                {% include 'loans/loan_detail_page_elements/loan_detail_payment_breakdown_section.html' %}
+            </div>
+            <div class="loan-detail-area col-sm-3">
+                <div>a</div>
+            </div>
+            <div class="loan-detail-area col-sm-9" style="padding: 3em 0.5em 0 0.5em;">
+                {% include 'loans/loan_detail_page_elements/loan_detail_tabbed_section.html' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <script src="{% static 'js/requery_loan_details.js' %}"></script> -->

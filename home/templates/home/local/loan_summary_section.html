@@ -1,0 +1,40 @@
+{% load wagtailimages_tags %}
+{% load pandas_filters %}
+{% load static %}
+<section class="cid-s3nMbhVkww">
+  <div class="container">
+      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-5"><em>30 Haziran 2020</em><br>Bankaların Faiz Oranları</h2>
+      <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-7">
+            Aşağıdaki tabloda bankaların faiz oranları ve tutar bilgilerini görebilirsiniz.</h3>
+      <div id = "loan-summary-tabs">
+        <ul class="nav nav-tabs mbr-fonts-styles display-7" id="loanSummaryTabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="GPLSummary-tab" data-toggle="tab" href="#GPLSummary" role="tab" aria-controls="GPLSummary" aria-selected="false">İhtiyaç Kredisi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="MORSummary-tab" data-toggle="tab" href="#MORSummary" role="tab" aria-controls="MORSummary" aria-selected="false">Konut Kredisi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="CARSummary-tab" data-toggle="tab" href="#CARSummary" role="tab" aria-controls="CARSummary" aria-selected="false">Taşıt Kredisi 0 Km</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="CA2Summary-tab" data-toggle="tab" href="#CA2Summary" role="tab" aria-controls="CA2Summary" aria-selected="false">Taşıt Kredisi 2. El</a>
+          </li>
+        </ul>
+
+        <div class="tab-content mbr-fonts-styles display-7" id="loanSummaryTabsContent">
+          <div class="tab-pane fade show active" id="GPLSummary" role="tabpanel" aria-labelledby="GPLSummary-tab">
+            {% include "home/local/loan_summary_table_gpl.html" with lt="GPL" %}
+          </div>
+          <div class="tab-pane fade" id="MORSummary" role="tabpanel" aria-labelledby="MORSummary-tab">
+            {% include "home/local/loan_summary_table_gpl.html" with lt="MOR" %}
+          </div>
+          <div class="tab-pane fade" id="CARSummary" role="tabpanel" aria-labelledby="CARSummary-tab">
+            {% include "home/local/loan_summary_table_gpl.html" with lt="CAR" %}
+          </div>
+          <div class="tab-pane fade" id="CA2Summary" role="tabpanel" aria-labelledby="CA2Summary-tab">
+            {% include "home/local/loan_summary_table_gpl.html" with lt="CA2" %}
+          </div>
+        </div>
+      </div>
+</section>

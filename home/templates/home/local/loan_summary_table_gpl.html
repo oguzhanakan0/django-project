@@ -1,0 +1,110 @@
+{% load wagtailimages_tags %}
+{% load pandas_filters %}
+{% load crispy_forms_tags %}
+<div class="container scroll">
+  <table class="table align-center" id = {{loan_summary_item.loan_type.loan_type}} >
+    <thead>
+        <th class="head-item mbr-fonts-style display-6">
+          
+        </th>
+        <th class="head-item mbr-fonts-style display-7">
+          <span class="display-6 font-weight-bold">Tutar</span><br>            
+          <span class="display-8 font-weight-light">min-maks</span>
+        </th>
+        <th class="head-item mbr-fonts-style display-7">
+          <span class="display-6 font-weight-bold">Vade</span><br>            
+          <span class="display-8 font-weight-light">min-maks</span>
+        </th>
+        <th class="head-item mbr-fonts-style display-7">
+          <span class="display-6 font-weight-bold">Faiz</span><br>            
+          <span class="display-8 font-weight-light">min-maks</span>
+        </th>
+        <th class="head-item mbr-fonts-style display-6" colspan="3">
+            Hızlı Sorgula
+        </th>
+        
+    </thead>
+
+    <tbody>
+      
+      
+    {% for loan_summary_item in loan_summary %}
+      {% if loan_summary_item.loan_type.loan_type == lt %}
+      <tr>                 
+        <td>
+          {% image loan_summary_item.bank.logo fill-150x50-c100 alt="{{ loan_summary_item.bank.name }}" %}
+        </td>
+        <td class = "mbr-fonts-style display-7">
+          <span class="display-7 mbr-semibold">
+            {{ loan_summary_item.min_principal.principal|as_currency_plain_short  }} - 
+            {{ loan_summary_item.max_principal.principal|as_currency_plain_short  }}
+          </span>
+        </td>
+        <td>
+          <span class="display-7 mbr-semibold">
+            {{ loan_summary_item.min_tenure.tenure|add_tenure_suffix_plain  }} - 
+            {{ loan_summary_item.max_tenure.tenure|add_tenure_suffix_plain  }}
+          </span>
+        </td>
+        <td>
+          <span class="display-7 mbr-semibold">
+            {% concat_interests loan_summary_item.min_interest loan_summary_item.max_interest %}
+          </span>
+        </td>
+        <form 
+            method = "post"
+            id={% concat "quickLoanDetailRequestForm" loan_summary_item.loan_type.loan_type loan_summary_item.bank.id %} 
+            data-tenures-url="{% url 'ajax_load_tenures' %}"
+            get-principal-limits-url="{% url 'ajax_get_principal_limits' %}">
+            <input type="hidden" name="request_type" value="request_from_loan_summary_table" />
+            <input type="hidden" name="loan_type" value={{ lt }} />
+            <input type="hidden" name="bank_slug" value={{loan_summary_item.bank.slug}} />
+            <td class="display-8 mbr-semibold">
+              {% csrf_token %}
+                {{ form.media }}
+                <!-- principal input widget -->
+                <div class="controls">
+                  <div class="form-group-loan-request display-8">
+                      <input
+                      id = {% concat "id_principal" loan_summary_item.loan_type.loan_type loan_summary_item.bank.id %}
+                      name = "principal"
+                      class = "form-field"
+                      type = "number"
+                      step = "1000"
+                      min = {{ loan_summary_item.min_principal }}
+                      max = {{ loan_summary_item.max_principal }}
+                      placeholder = "Kredi Tutarı"
+                      required>
+                      <span>TL</span>
+                  </div>
+                </div>
+            </td>
+            <td class="display-7 mbr-semibold">
+                <div class="controls">
+                  <!-- tenure input widget -->
+                  <select 
+                    name="tenure" 
+                    class="select form-control" 
+                    required_id={% concat "id_tenure" loan_summary_item.loan_type.loan_type loan_summary_item.bank.id %}>
+                      <option value="">Vade</option>
+                      {% for tenure in loan_summary_tenures|get:loan_summary_item.id %}
+                        <option value="{{ tenure.tenure }}" {% if tenure.tenure == initial_tenure|as_int %} selected {% endif %}>
+                        {{ tenure.tenure|add_tenure_suffix }}
+                        </option>
+                      {% endfor %}
+                  </select>
+                </div>
+            </td>
+            <td class="display-7 mbr-semibold">
+              <button class="general-button apply-button mbr-fonts-style display-7 font-weight-bold">Hesapla</button>
+            </td>
+                
+            </form>
+        
+        
+      </tr>
+      {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+</div>

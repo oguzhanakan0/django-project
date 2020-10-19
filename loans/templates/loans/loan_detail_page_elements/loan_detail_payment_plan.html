@@ -1,0 +1,33 @@
+{% load static %}
+{% load pandas_filters %}
+<section class="cid-s3nMbhVkww">    
+    <div class="container scroll">
+      <table class="table" cellspacing="0" data-empty="No matching records found" id = "id_payment_plan" show="summary">
+        <thead>
+		    <tr class="table-heads ">
+		    	{% for col in loan.payment_plan.columns %}
+		        <th class="head-item mbr-fonts-styles display-7 align-right">{{col}}</th>
+		        {% endfor %}
+		    </tr>
+		</thead>
+
+        <tbody>
+        	{% for i, j in loan.payment_plan.iterrows %}
+				<tr class="body-item mbr-fonts-styles display-8 align-right" {% if j|get:'Ay'|as_int > 10 %} hidden {% endif %}>
+        			<td>{{ j|get:'Ay'|as_int }}</td>
+        			<td>{{ j|get:'Taksit'|as_currency_plain }}</td>
+        			<td>{{ j|get:'Anapara'|as_currency_plain }}</td>
+        			<td>{{ j|get:'Faiz'|as_currency_plain }}</td>
+        			<td>{{ j|get:'KKDF'|as_currency_plain }}</td>
+        			<td>{{ j|get:'BSMV'|as_currency_plain }}</td>
+        			<td style="background-color: hsl(120,46%,{% weight j|get:'Ay'|as_int loan.payment_plan.nrows %});">{{ j|get:'Kalan Ödeme'|as_currency_plain }}</td>
+        		</tr>
+        	{% endfor %}
+		</tbody>
+      </table>
+      
+			<i id="show-hide-payment-plan-btn" class="display-6 font-weight-bold">...Tamamını Göster/Gizle...</i></td>
+    </div>
+</section>
+
+<script src="{% static 'loans/js/show_hide_payment_plan.js' %}"></script>

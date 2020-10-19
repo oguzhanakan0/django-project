@@ -1,0 +1,20 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<div class = "pad-right-05em">
+    <form 
+    method = "post" id="quickLoanDetailRequestForm"
+    data-tenures-url="{% url 'ajax_load_tenures' %}"
+    get-principal-limits-url="{% url 'ajax_get_principal_limits' %}">
+        {% csrf_token %}
+        {{ form.media }}
+        <input type="hidden" name="slug" id="slug_id" value="{{ loan.slug }}" />
+        <input type="hidden" name="initial_tenure" id="initial_tenure_id" value="{{ tenure }}" />
+        <input type="hidden" name="initial_principal" id="initial_principal_id" value="{{ principal }}" />
+        {{ form.principal|as_crispy_field }}
+        {{ form.tenure|as_crispy_field }}
+        <button type="submit" class="general-button mbr-fonts-style display-4 font-weight-bold" name="detail-button">Tekrar Hesapla</button>
+    </form>
+</div>
+{% comment %} <script src="{% static 'home/js/set-loan-type.js' %}"></script> {% endcomment %}
+
+<script src="{% static 'loans/js/requery_loan_detail.js' %}"></script>

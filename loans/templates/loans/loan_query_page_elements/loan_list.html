@@ -1,0 +1,23 @@
+<div class="row align-items-start justify-content-center">
+    <section class="cid-s3ZoaRMIHq">
+        <div class="container">
+            <div class="row-nice">
+                <div class="loan-query-area col-xs-2 col-sm-2">
+                    {% include 'loans/loan_query_page_elements/loan_requery_section.html' %}
+                </div>
+                <!--Titles-->
+                <div class="loan-query-area col-xs-10 col-sm-10">
+                {% if at_least_one_loan %}
+                    {% include 'loans/loan_query_page_elements/loan_list_header.html' %}
+                    <!--Cards-->
+                    {% for loan in loans %}
+                        {% include 'loans/loan_query_page_elements/single_loan_summary.html' %}
+                    {% endfor %}
+                {% else %}
+                    {% include 'loans/loan_query_page_elements/no_loan_found_message.html' %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

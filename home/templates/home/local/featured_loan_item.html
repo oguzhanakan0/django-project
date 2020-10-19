@@ -1,0 +1,67 @@
+{% load wagtailimages_tags %}
+{% load pandas_filters %}
+<div class="card" style="width: 16rem;">
+	<div class="align-left">
+		{% image loan.bank.logo fill-150x50-c100 alt="{{ loan.bank.name }}" %}<br><span class="display-7 mbr-semibold">{{ loan.name }}</span>
+	</div>
+  <div class="card-body">
+
+  	<form 
+
+        method = "post"
+        id={% concat "featured_loan_" loan.slug %} 
+        data-tenures-url="{% url 'ajax_load_tenures' %}"
+        get-principal-limits-url="{% url 'ajax_get_principal_limits' %}">
+        <input type="hidden" name="request_type" value="request_from_loan_summary_table" />
+        <input type="hidden" name="loan_type" value={{ lt }} />
+        <input type="hidden" name="bank_slug" value={{loan.bank.slug}} />
+        
+          	{% csrf_token %}
+            {{ form.media }}
+            <!-- principal input widget -->
+            <div class="controls">
+              <div class="form-group-loan-request display-8">
+                  <input
+                  id = {% concat "featured_loan_id_principal_" loan.slug %} 
+                  name = "principal"
+                  class = "form-field"
+                  type = "number"
+                  step = "1000"
+                  min = 0
+                  placeholder = "Kredi Tutarı"
+                  required>
+                  <span>TL</span>
+              </div>
+            </div>
+            <div class="controls">
+              <!-- tenure input widget -->
+              <select 
+                name="tenure" 
+                class="select form-control" 
+                required
+                id={% concat "featured_loan_id_tenure_" loan.slug %} 
+                  <option value="">Vade</option>
+              </select>
+            </div>
+            
+	</form>
+    
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="space-between">
+		<span>Faiz Oranı</span>
+		<span>{{ loan.interest|as_percentage }}</span>
+    </li>
+    <li class="space-between">
+		<span>Aylık Taksit</span>
+		<span>{{ loan.installment|as_currency_plain }}</span>
+    </li>
+    <li class="space-between">
+		<span>Toplam Ödeme</span>
+		<span>{{ loan.total_payment|as_currency_plain }}</span>
+    </li>
+    <li class="space-between">
+		<button class="general-button apply-button display-7" style="background-color: green;">Hemen Başvur<span class="mobi-mbri-cursor-click "></span></button>
+    </li>
+  </ul>
+</div>

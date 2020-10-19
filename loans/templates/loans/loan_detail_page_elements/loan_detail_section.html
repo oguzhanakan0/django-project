@@ -1,0 +1,34 @@
+{% load humanize %}
+{% load pandas_filters %}
+<div class = "pad-right-05em pad-left-05em">
+    <div class="align-center border-bottom">
+        <span class="display-5">Kredi Özetiniz</span>
+    </div>
+
+    <div class="loan-detail-upper-parent border-bottom">
+        <div class="loan-detail-upper-div1 align-left">
+            <span class="display-8">Kredi Tutarı</span><br>
+            <span class="display-6 font-weight-bold">{% as_currency loan.principal 'left' %}</span>
+            <span class="display-8">{% as_currency loan.principal 'right' %}</span>
+        </div>
+        <div class="loan-detail-upper-div2 align-center ">
+            <span class="display-8">Vade</span><br>
+            <span class="display-6 font-weight-bold">{{ tenure|add_tenure_suffix }}</span>
+        </div>
+        <div class="loan-detail-upper-div3 align-right">
+            <span class="display-8">Faiz Oranı</span><br>
+            <span class="display-6 font-weight-bold">{{ loan.interest|as_percentage }}</span>
+        </div>
+    </div>
+
+    <div class="loan-detail-lower-parent">
+        <div class="loan-detail-lower-div1 align-left">
+            <span class="display-6">Aylık Taksit</span><br>
+                <span class="display-3 font-weight-bold">{% as_currency loan.installment 'left' %}</span>
+                <span class="display-8">{% as_currency loan.installment 'right' %}</span>
+        </div>
+        <div class="loan-detail-lower-div2">
+            <button class="general-button apply-button mbr-fonts-style display-7 font-weight-bold" style="background-color: green;">Hemen Başvur<span class="mobi-mbri mobi-mbri-cursor-click mbr-iconfont mbr-iconfont-btn"></span></button>
+        </div>
+    </div>
+</div>

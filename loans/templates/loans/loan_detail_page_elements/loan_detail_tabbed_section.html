@@ -1,0 +1,36 @@
+{% load static %}
+{% load pandas_filters %}
+<div id = "loan-detail-tabs">
+	<ul class="nav nav-tabs mbr-fonts-styles display-7" id="loanDetailTabs" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link active" id="payment-plan-tab" data-toggle="tab" href="#payment-plan" role="tab" aria-controls="payment-plan" aria-selected="false">Ödeme Planı</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" id="documents-tab" data-toggle="tab" href="#documents" role="tab" aria-controls="documents" aria-selected="false">İstenen Belgeler</a>
+		</li>
+	</ul>
+	<div class="tab-content mbr-fonts-styles display-7" id="loanDetailTabsContent">
+		<div class="tab-pane fade show active" id="payment-plan" role="tabpanel" aria-labelledby="payment-plan-tab">
+			{% include 'loans/loan_detail_page_elements/loan_detail_payment_plan.html' %}
+			</div>
+
+		<div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
+			{{ loan.bank.name }} - {{ loan.name }}<br>
+			{{ loan.description }}
+		</div>
+	</div>
+</div>
+
+<!-- <script type="text/javascript">
+	$(function() {
+		$('#datatable.pandas').bootstrapTable({
+		    striped: true,
+		    showColumns: true,
+		    showToggle: false,
+		    showExport: false,
+		    sortable: true,
+		    columns: {{ loan.payment_plan_columns|safe }},
+		    data: {{ loan.payment_plan_data|safe }},
+		});
+	});
+</script> -->

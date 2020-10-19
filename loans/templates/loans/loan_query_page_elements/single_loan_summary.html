@@ -1,0 +1,61 @@
+{% load wagtailimages_tags %}
+{% load pandas_filters %}
+
+<div class="card-box loan-box">
+    <div class="row">
+        <div class="col-xs-3 col-sm-2 align-center border-right">
+            {% image loan.bank.logo fill-150x50-c100 alt="{{ loan.bank.name }}" %}<br><span class="display-7 mbr-semibold">{{ loan.name }}</span>
+        </div>
+        <div class="col-xs-3 col-sm-2 align-center">
+            <span class="display-8">Faiz Oranı</span>
+            <a data-tooltip="Faiz oranı kredi puanınıza göre değişiklik gösterebilir."><span class="mobi-mbri mobi-mbri-info mbr-iconfont mbr-iconfont-btn"></span></a>
+            <br>
+            <span class="display-6 font-weight-bold">{{ loan.interest|as_percentage }}</span>
+        </div>
+        <div class="col-xs-3 col-sm-2 align-center">
+            <span class="display-8">Aylık Taksit</span><br>            
+            <span class="display-6 font-weight-bold">{% as_currency loan.installment 'left' %}</span>
+            <span class="display-8">{% as_currency loan.installment 'right' %}</span>
+        </div>
+        <div class="col-xs-3 col-sm-2 align-center">
+            <span class="display-8">Toplam Ödeme</span>
+            <a data-tooltip="Kredi tutarının %0,05'i kadarlık dosya masrafı dahil edilmiştir."><span class="mobi-mbri mobi-mbri-help mbr-iconfont mbr-iconfont-btn"></span></a>
+            <br>
+            <span class="display-6 font-weight-bold">{% as_currency loan.total_payment 'left' %}</span>
+            <span class="display-8">{% as_currency loan.total_payment 'right' %}</span>
+        </div>
+        <div class="col-xs-6 col-sm-2">
+            <form method = "post" name = "loan-detail" id="loanDetailRequest">
+                {% csrf_token %}
+                <input type="hidden" name="principal" value="{{ principal }}" />
+                <input type="hidden" name="tenure" value="{{ tenure }}" />
+                <input type="hidden" name="slug" value="{{ loan.slug }}" />
+                
+                <button class="general-button detail-button mbr-fonts-style display-7" name="detail-button">Detay</button>
+            </form>
+        </div>
+        <div class="col-xs-6 col-sm-2">
+            <button class="general-button apply-button mbr-fonts-style display-7 font-weight-bold">Hemen Başvur</button>
+        </div>
+    </div>
+</div>
+
+
+{% comment %} <div class = "loan-box">
+    {% for loan in loans %}
+    <div class = "loan-box">
+        <h2>{{ loan.name }}</h2>
+        <p>{{ loan.bank }}</p>
+        <p>{{ loan.description}}</p>
+        <p>Seçilen vade: {{ loan.tenure }}</p>
+        <p>Faiz oranı: {{ loan.interest }}</p>
+        <p>Aylık taksit: {{ loan.installment }}</p>
+        <p>----Detaylar----</p>
+        <p>Kredi tutarı: {{ loan.principal }}</p>
+        <p>Toplam Faiz: {{ loan.total_interest }}</p>
+        <p>Tahsis ücreti: {{ loan.allocation_fee }}</p>
+        <p>Toplam ödeme: {{ loan.total_payment }}</p>
+
+    </div>
+    {% endfor %}
+</div> {% endcomment %}

@@ -1,0 +1,46 @@
+.loan-detail-upper-parent {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+-webkit-align-items: center;
+-webkit-justify-content: center;
+margin: 1em 0em;
+padding-bottom: 1em;
+}
+
+.loan-detail-upper-div1 { grid-area: 1 / 1 / 2 / 2;}
+.loan-detail-upper-div2 { grid-area: 1 / 2 / 2 / 3;}
+.loan-detail-upper-div3 { grid-area: 1 / 3 / 2 / 4;}
+
+.loan-detail-lower-parent {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+margin: 1em 0em;
+}
+
+.loan-detail-lower-div1 { grid-area: 1 / 1 / 2 / 2; }
+.loan-detail-lower-div2 { grid-area: 1 / 2 / 2 / 3; }
+
+.loan-payment-breakdown-parent {
+	
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 10em 1em;
+grid-row-gap: 1em 1em;
+}
+
+.loan-payment-breakdown-div1 { grid-area: 1 / 1 / 2 / 3; padding-top: 1em;}
+.loan-payment-breakdown-div2 { grid-area: 2 / 1 / 3 / 2; }
+.loan-payment-breakdown-div3 { grid-area: 2 / 2 / 3 / 3; }
+.loan-payment-breakdown-div4 { grid-area: 3 / 1 / 4 / 2; }
+.loan-payment-breakdown-div5 { grid-area: 3 / 2 / 4 / 3; }
+.loan-payment-breakdown-div6 { grid-area: 4 / 1 / 5 / 2; }
+.loan-payment-breakdown-div7 { grid-area: 4 / 2 / 5 / 3; }
+.loan-payment-breakdown-div8 { grid-area: 5 / 1 / 6 / 2; padding-top: 0.5em;}
+.loan-payment-breakdown-div9 { grid-area: 5 / 2 / 6 / 3; padding-top: 0.5em;}

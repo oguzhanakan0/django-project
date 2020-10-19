@@ -1,0 +1,16 @@
+{% load wagtailimages_tags %}
+{% load pandas_filters %}
+{% load static %}
+<section class="cid-s3nMbhVkww">
+	<div class="container">
+	<h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-5">Öne Çıkan Krediler</h2>
+      <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-7">
+            Aşağıdaki tabloda en çok tercih edilen kredilerin faiz oranları ve tutar bilgilerini görebilirsiniz.</h3>
+	<div id="ft-container" class="display-7">	
+		{% for loan in featured_loans %}
+			{% include "home/local/featured_loan_item.html" %}
+		{% endfor %}
+	</div>
+</div>
+<div style="height: 100px;"></div>
+</section>

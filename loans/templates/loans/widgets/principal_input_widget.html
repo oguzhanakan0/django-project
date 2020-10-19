@@ -1,0 +1,20 @@
+{% load pandas_filters %}
+<div class="controls">
+	<div class="form-group-loan-request">
+	    <input
+	    id = "id_principal"
+	    {% if initial_principal != None %} value="{{ initial_principal }}"{% endif %}
+	    name = "principal"
+	    class = "form-field"
+	    type = "number"
+	    step = "1000"
+	    min = {{ min }}
+	    max = {{ max }}
+	    placeholder = "Kredi Tutarı ({{ min|as_currency_plain }} - {{ max|as_currency_plain }})"
+	    required>
+	    <span>TL</span>
+	</div>
+</div>
+
+
+<!-- {% include "loans/widgets/attrs.html" %} -->

@@ -1,0 +1,40 @@
+{% load wagtailimages_tags %}
+{% load pandas_filters %}
+{% load static %}
+<section class="cid-s3nMbhVkww">
+  <div class="container">
+      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-5"><em>30 Haziran 2020</em><br>En Düşük Faiz Oranları (Matrix)</h2>
+      <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-7">Vade ve tutar aralıklarına göre en düşük faizleri aşağıdaki tablodan inceleyebilirsiniz.</h3>
+      <div id = "loan-Matrix-tabs">
+        <ul class="nav nav-tabs mbr-fonts-styles display-7" id="loanMatrixTabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="GPLMatrix-tab" data-toggle="tab" href="#GPLMatrix" role="tab" aria-controls="GPLMatrix" aria-selected="false">İhtiyaç Kredisi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="MORMatrix-tab" data-toggle="tab" href="#MORMatrix" role="tab" aria-controls="MORMatrix" aria-selected="false">Konut Kredisi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="CARMatrix-tab" data-toggle="tab" href="#CARMatrix" role="tab" aria-controls="CARMatrix" aria-selected="false">Taşıt Kredisi 0 Km</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="CA2Matrix-tab" data-toggle="tab" href="#CA2Matrix" role="tab" aria-controls="CA2Matrix" aria-selected="false">Taşıt Kredisi 2. El</a>
+          </li>
+        </ul>
+
+        <div class="tab-content mbr-fonts-styles display-7" id="loanMatrixTabsContent">
+          <div class="tab-pane fade show active" id="GPLMatrix" role="tabpanel" aria-labelledby="GPLMatrix-tab">
+            {% include "home/local/loan_matrix_table.html" with lt="GPL" %}
+          </div>
+          <div class="tab-pane fade" id="MORMatrix" role="tabpanel" aria-labelledby="MORMatrix-tab">
+            {% include "home/local/loan_matrix_table.html" with lt="MOR" %}
+          </div>
+          <div class="tab-pane fade" id="CARMatrix" role="tabpanel" aria-labelledby="CARMatrix-tab">
+            {% include "home/local/loan_matrix_table.html" with lt="CAR" %}
+          </div>
+          <div class="tab-pane fade" id="CA2Matrix" role="tabpanel" aria-labelledby="CA2Matrix-tab">
+            {% include "home/local/loan_matrix_table.html" with lt="CA2" %}
+          </div>
+        </div>
+      </div>
+      <div style="height:100px;">
+</section>
